@@ -16,8 +16,18 @@
    --bs-btn-disabled-bg: #09619c;
    --bs-btn-disabled-border-color: #09619c;
 
+   
+}
+#start{
    font-size: 20px;
    font-family: Arial;
+
+}
+
+#stop{
+   font-size: 20px;
+   font-family: Arial;
+
 }
 
 .kmh{
