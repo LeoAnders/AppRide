@@ -8,18 +8,24 @@ function createNewRide(){
 
 
    } 
-   localStorage.setItem(rideID, JSON.stringify(rideRecord))// Armazena o registro do passeio no localStorage
+   saveRideRecord(rideID, rideRecord)
    return rideID
 
 }
+function getAllRides(){
+   return Object.entries(localStorage)
+   
+}
+
+function getRideRecord(rideID){
+   return JSON.parse(localStorage.getItem(rideID))// Obtém o registro do passeio do localStorage e o converte de volta para um objeto
+}
+
+
 function saveRideRecord(rideID, rideRecord) {
    localStorage.setItem(rideID, JSON.stringify(rideRecord))// Atualiza o registro do passeio no localStorage
 }
 
-function getRideRecord(rideID){
-
-   return JSON.parse(localStorage.getItem(rideID))// Obtém o registro do passeio do localStorage e o converte de volta para um objeto
-}
 
 function addPosition(rideID, position){
    const rideRecord = getRideRecord(rideID)
