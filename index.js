@@ -1,4 +1,3 @@
-
 const rideListElement = document.querySelector("#rideList")
 const allRides = getAllRides()//obtemos a lista de todas as corridas. O resultado é armazenado em allRides.
 
@@ -12,12 +11,24 @@ allRides.forEach(async ([id, value])=>{
 
    const itemElement = document.createElement("li")
    itemElement.id = ride.id
+   itemElement.className = "d-flex p-1 align-items-center mt-2 gap-3"
+
+   const mapElement = document.createElement("div")
+   mapElement.style = "width:100px; height:100px;"
+   mapElement.className = "bg-secondary rounded-3"
+
+
+   const dataElement = document.createElement("div")
+   dataElement.className = "d-flex flex-column"
+  
    
    const cityDiv = document.createElement("div") 
    cityDiv.innerText = `${firstLocationData.city}-${firstLocationData.countryCode}`
+   cityDiv.className = "text-primary mb-1"
 
    const maxSpeedDiv = document.createElement("div")
    maxSpeedDiv.innerText =  `Max speed: ${getMaxSpeed(ride.data)} Km/h` 
+   maxSpeedDiv.className = "h6"
 
    const distanceDiv = document.createElement("div")
    distanceDiv.innerText = `Distance: ${getDistance(ride.data)} Km`
@@ -25,15 +36,20 @@ allRides.forEach(async ([id, value])=>{
    const durationDiv = document.createElement("div")
    durationDiv.innerText = `Duration: ${getDuration(ride) }`  //Para esse calculo pegamos o momento do Stop - o momento do start e teremos o total do tempo em milissegundos 
 
-   const DateDiv = document.createElement("div")    
-   DateDiv.innerText = `Date: ${getStartDate(ride)}`
+   const dateDiv = document.createElement("div")    
+   dateDiv.innerText = `Date: ${getStartDate(ride)}`
+   dateDiv.classList = "text-secondary"
 
-   itemElement.appendChild(cityDiv)
-   itemElement.appendChild(maxSpeedDiv)
-   itemElement.appendChild(distanceDiv)
+  dataElement.appendChild(cityDiv)
+  dataElement.appendChild(maxSpeedDiv)
+  dataElement.appendChild(distanceDiv)
+  dataElement.appendChild(durationDiv)
+  dataElement.appendChild(dateDiv)
+
+  itemElement.appendChild(mapElement)
+  itemElement.appendChild(dataElement)
+
    rideListElement.appendChild(itemElement)
-   itemElement.appendChild(durationDiv)
-   itemElement.appendChild(DateDiv)
 })
 
 async function getLocationData(latitude, longitude){
@@ -81,7 +97,7 @@ function getDistance(position){ //Distancia total percorrida
              Math.cos(toRad(p1.latitude)) * 
              Math.cos(toRad(p2.latitude))
 
-      const c = 2 * Math.atan2(Math.sqrt(a),Match.sqrt(1-a)) 
+      const c = 2 * Math.atan2(Math.sqrt(a),Math.sqrt(1-a)) 
       
       const distance = earthRadiusKm * c
 
@@ -123,6 +139,7 @@ function getStartDate(ride){
 
    return `${month}/${day}/${year} - ${hour}:${minute}`
 }
+
 
 
 
