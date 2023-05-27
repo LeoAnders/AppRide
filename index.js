@@ -5,13 +5,15 @@ allRides.forEach(async ([id, value])=>{
    const ride = JSON.parse(value)
    ride.id = id
    console.log(ride)
-
-   const firstPosition = ride.data[0]
-   const firstLocationData = await getLocationData(firstPosition.latitude, firstPosition.longitude);
-
+   
    const itemElement = document.createElement("li")
    itemElement.id = ride.id
    itemElement.className = "d-flex p-1 align-items-center mt-2 gap-3"
+   rideListElement.appendChild(itemElement)
+   
+   const firstPosition = ride.data[0]
+   const firstLocationData = await getLocationData(firstPosition.latitude, firstPosition.longitude);
+
 
    const mapElement = document.createElement("div")
    mapElement.style = "width:100px; height:100px;"
@@ -49,7 +51,7 @@ allRides.forEach(async ([id, value])=>{
   itemElement.appendChild(mapElement)
   itemElement.appendChild(dataElement)
 
-   rideListElement.appendChild(itemElement)
+ 
 })
 
 async function getLocationData(latitude, longitude){
