@@ -27,11 +27,11 @@ async function getLocationData(latitude, longitude){
      for(let i = 0;  i<position.length - 1; i++) {
         const p1 = {
                  latitude:position[i].latitude, 
-                 longitude:position[i]
+                 longitude:position[i].longitude
         }
         const p2 = {
                  latitude:position[i + 1].latitude, 
-                 longitude:position[i + 1]
+                 longitude:position[i + 1].longitude
         }
   
         const deltaLatitude = toRad(p2.latitude - p1.latitude)

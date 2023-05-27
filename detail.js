@@ -52,7 +52,6 @@ document.addEventListener("DOMContentLoaded",async()=>{
   const map = L.map("mapDetail")
   map.setView([firstPosition.latitude, firstPosition.longitude],10)
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attributionControl:false,
     minZoom:5,
     maxZoom: 17
   
