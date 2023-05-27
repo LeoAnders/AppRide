@@ -1,9 +1,7 @@
 
 const params = new URLSearchParams(window.location.search)
 const rideID = params.get("id")
-console.log(rideID);
 const ride = getRideRecord(rideID)
-console.log(ride);
 
 document.addEventListener("DOMContentLoaded",async()=>{
 
@@ -42,6 +40,13 @@ document.addEventListener("DOMContentLoaded",async()=>{
   dataElement.appendChild(dateDiv)
 
   document.querySelector("#data").appendChild(dataElement)
+
+  const btnDelete = document.querySelector("#btnDelete")
+  btnDelete.addEventListener("click",()=>{
+    
+    deleteRide(rideID)
+    window.location.href = "./"
+  })
 
 
   const map = L.map("mapDetail")
