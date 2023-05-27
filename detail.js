@@ -1,0 +1,46 @@
+
+const params = new URLSearchParams(window.location.search)
+const rideID = params.get("id")
+console.log(rideID);
+const ride = getRideRecord(rideID)
+console.log(ride);
+
+document.addEventListener("DOMContentLoaded",async()=>{
+
+  const firstPosition = ride.data[0]
+  const firstLocationData = await getLocationData(firstPosition.latitude, firstPosition.longitude);
+
+  const mapElement = document.createElement("div")
+  mapElement.style = "width:100px; height:100px;"
+  mapElement.className = "bg-secondary rounded-3"
+
+  const dataElement = document.createElement("div")
+  dataElement.className = "d-flex flex-column"
+
+  const cityDiv = document.createElement("div") 
+  cityDiv.innerText = `${firstLocationData.city}-${firstLocationData.countryCode}`
+  cityDiv.className = "text-primary mb-1"
+
+  const maxSpeedDiv = document.createElement("div")
+  maxSpeedDiv.innerText =  `Max speed: ${getMaxSpeed(ride.data)} Km/h` 
+  maxSpeedDiv.className = "h6"
+
+  const distanceDiv = document.createElement("div")
+  distanceDiv.innerText = `Distance: ${getDistance(ride.data)} Km`
+
+  const durationDiv = document.createElement("div")
+  durationDiv.innerText = `Duration: ${getDuration(ride) }`  //Para esse calculo pegamos o momento do Stop - o momento do start e teremos o total do tempo em milissegundos 
+
+  const dateDiv = document.createElement("div")    
+  dateDiv.innerText = `Date: ${getStartDate(ride)}`
+  dateDiv.classList = "text-secondary"
+
+  dataElement.appendChild(cityDiv)
+  dataElement.appendChild(maxSpeedDiv)
+  dataElement.appendChild(distanceDiv)
+  dataElement.appendChild(durationDiv)
+  dataElement.appendChild(dateDiv)
+
+  document.querySelector("#data").appendChild(dataElement)
+
+})

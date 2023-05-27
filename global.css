@@ -16,22 +16,19 @@
    --bs-btn-disabled-bg: #09619c;
    --bs-btn-disabled-border-color: #09619c;
 
-   
 }
 #start{
    font-size:30px;
    width: 80px;
    height: 80px;
    border-radius: 50%;
-   
 }
 
 #stop{
    font-size:30px;
    width: 80px;
    height: 80px;
-   border-radius: 50%;
-
+   border-radius: 50%
 }
 
 .kmh{
@@ -43,13 +40,18 @@
    font-size: 120px;
 }
 
-
-
 .btnAddRun{
    width: 60px;
    height: 60px;
    font-size: 30px;
    border-radius: 50%;
 
+}
+
+
+#mapDetail{
+   height: 300px;
+   background-color: #888888;
+   border-radius: 8px;
 }
 
