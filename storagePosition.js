@@ -1,8 +1,8 @@
 
 function createNewRide(){
-   const rideID = Date.now()//Captura o momento que o usuário aperta em Start
+   const rideID = Date.now()
    const rideRecord = {
-    data: [], // Array para armazenar as posições durante o passeio
+    data: [], 
     startTime: rideID,
     stopTime: null
 
@@ -23,19 +23,19 @@ function getAllRides(){
 }
 
 function getRideRecord(rideID){
-   return JSON.parse(localStorage.getItem(rideID))// Obtém o registro do passeio do localStorage e o converte de volta para um objeto
+   return JSON.parse(localStorage.getItem(rideID))
 }
 
 
 function saveRideRecord(rideID, rideRecord) {
-   localStorage.setItem(rideID, JSON.stringify(rideRecord))// Atualiza o registro do passeio no localStorage
+   localStorage.setItem(rideID, JSON.stringify(rideRecord))
 }
 
 
 function addPosition(rideID, position){
    const rideRecord = getRideRecord(rideID)
 
-    // Cria um novo objeto com os dados da posição atual
+   
    const newData = {
       accuracy: position.coords.accuracy,
       altitude:position.coords.altitude,
@@ -47,9 +47,8 @@ function addPosition(rideID, position){
       timesTamp: position.timesTamp
    }
 
-   rideRecord.data.push(newData) // Adiciona os dados da posição ao array de dados do passeio
-   saveRideRecord(rideID, rideRecord) // Salva o registro atualizado do passeio no localStorage
-   
+   rideRecord.data.push(newData) 
+   saveRideRecord(rideID, rideRecord) 
 }
 
 function updateStopTime(rideID){

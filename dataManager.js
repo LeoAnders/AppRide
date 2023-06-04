@@ -1,9 +1,8 @@
 
 async function getLocationData(latitude, longitude){
-  //para obter os dados de localização com base na latitude e longitude da primeira posição da corrida. Essa chamada é assíncrona e aguarda a resposta usando await. Os dados de localização são armazenados em firstLocationData.
      const url = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&=localityLanguage=en`
   
-     const response = await fetch(url)//fetch é chamada com a URL construída como argumento. O fetch é uma função assíncrona que faz uma requisição HTTP para a API e retorna uma promessa.
+     const response = await fetch(url)
      return await response.json()
      
   }
@@ -11,18 +10,18 @@ async function getLocationData(latitude, longitude){
   function getMaxSpeed(positions){
      console.log(positions);
      let maxSpeed = 0
-     positions.forEach(position=>{ //Itera sobre cada posição no array de posições
-        if(position.speed != null && position.speed > maxSpeed) //Verifica se a velocidade da posição atual não é nula e se é maior do que a velocidade máxima atual 
+     positions.forEach(position=>{ 
+        if(position.speed != null && position.speed > maxSpeed) 
         maxSpeed = position.speed
      })
   
-     return (maxSpeed * 3.6).toFixed(1) //Convertemos de m/s para km  
+     return (maxSpeed * 3.6).toFixed(1) 
   }
   
   
-  function getDistance(position){ //Distancia total percorrida 
+  function getDistance(position){ 
      
-     const earthRadiusKm = 6371 //Raio em km da terra
+     const earthRadiusKm = 6371 
      let totalDistance = 0
      for(let i = 0;  i<position.length - 1; i++) {
         const p1 = {

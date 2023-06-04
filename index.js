@@ -1,5 +1,5 @@
 const rideListElement = document.querySelector("#rideList")
-const allRides = getAllRides()//obtemos a lista de todas as corridas. O resultado é armazenado em allRides.
+const allRides = getAllRides()
 
 allRides.forEach(async ([id, value])=>{
    const ride = JSON.parse(value)
@@ -43,8 +43,7 @@ allRides.forEach(async ([id, value])=>{
    distanceDiv.innerText = `Distance: ${getDistance(ride.data)} Km`
 
    const durationDiv = document.createElement("div")
-   durationDiv.innerText = `Duration: ${getDuration(ride) }`  //Para esse calculo pegamos o momento do Stop - o momento do start e teremos o total do tempo em milissegundos 
-
+   durationDiv.innerText = `Duration: ${getDuration(ride) }` 
    const dateDiv = document.createElement("div")    
    dateDiv.innerText = `Date: ${getStartDate(ride)}`
    dateDiv.classList = "text-secondary"
