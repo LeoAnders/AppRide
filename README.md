@@ -8,6 +8,14 @@ Ao longo do desenvolvimento desse projeto, pude explorar as possibilidades ofere
  
 ---
 
+<div align="center">
+ 
+<img src="https://github.com/LeoAnders/AppRide/assets/115679546/4695b3aa-4c86-4c36-aa58-49256cb8e3fa"  width="500" >
+
+</div>
+
+
+     
 ### Integração de APIs no Projeto "appRide"
 
 > #### Geolocation API
